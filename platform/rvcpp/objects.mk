@@ -53,15 +53,15 @@ FW_DYNAMIC=y
 
 #
 # Jump firmware configuration.
-# FW_JUMP=y
+FW_JUMP=y
 # This needs to be 4MB aligned for 32-bit support
 # This needs to be 2MB aligned for 64-bit support
-# ifeq ($(PLATFORM_RISCV_XLEN), 32)
-# FW_JUMP_ADDR=0x80400000
-# else
-# FW_JUMP_ADDR=0x80200000
-# endif
-# FW_JUMP_FDT_ADDR=0x82200000
+ifeq ($(PLATFORM_RISCV_XLEN), 32)
+FW_JUMP_ADDR=0x80400000
+else
+FW_JUMP_ADDR=0x80200000
+endif
+FW_JUMP_FDT_ADDR=0x82200000
 
 #
 # Firmware with payload configuration.
