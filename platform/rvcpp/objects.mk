@@ -39,7 +39,7 @@ platform-objs-y += platform.o
 # the device tree compiled file should be specified here. The device tree
 # source file be in the form <dt file name>.dts
 #
-# platform-objs-y += <dt file name>.o
+platform-objs-y += rvcpp_platform.o
 
 # Firmware load address configuration. This is mandatory.
 FW_TEXT_START=0x80000000
