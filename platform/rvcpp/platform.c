@@ -19,23 +19,21 @@
 #include <sbi_utils/timer/aclint_mtimer.h>
 
 #define PLATFORM_HART_COUNT         1
-#define PLATFORM_ACLINT_MTIMER_FREQ 1000000
-#define PLATFORM_ACLINT_MTIMER_ADDR 0xe0008000
+#define PLATFORM_MTIMER_FREQ 1000000
+#define PLATFORM_MTIMER_ADDR 0xe0008000
 #define PLATFORM_UART_ADDR          0xe0004000
 #define PLATFORM_UART_INPUT_FREQ    10000000
 #define PLATFORM_UART_BAUDRATE      115200
 
 static struct aclint_mtimer_data mtimer = {
-	.mtime_freq = PLATFORM_ACLINT_MTIMER_FREQ,
-	.mtime_addr = PLATFORM_ACLINT_MTIMER_ADDR +
-		      ACLINT_DEFAULT_MTIME_OFFSET,
-	.mtime_size = ACLINT_DEFAULT_MTIME_SIZE,
-	.mtimecmp_addr = PLATFORM_ACLINT_MTIMER_ADDR +
-			 ACLINT_DEFAULT_MTIMECMP_OFFSET,
-	.mtimecmp_size = ACLINT_DEFAULT_MTIMECMP_SIZE,
+	.mtime_freq = PLATFORM_MTIMER_FREQ,
+	.mtime_addr = PLATFORM_MTIMER_ADDR,
+	.mtime_size = 8,
+	.mtimecmp_addr = PLATFORM_MTIMER_ADDR + 8,
+	.mtimecmp_size = 8 * PLATFORM_HART_COUNT,
 	.first_hartid = 0,
 	.hart_count = PLATFORM_HART_COUNT,
-	.has_64bit_mmio = true,
+	.has_64bit_mmio = false,
 };
 
 static int platform_early_init(bool cold_boot)

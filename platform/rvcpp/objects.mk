@@ -61,7 +61,7 @@ FW_JUMP_ADDR=0x80400000
 else
 FW_JUMP_ADDR=0x80200000
 endif
-FW_JUMP_FDT_ADDR=0x82200000
+FW_JUMP_FDT_ADDR=0x80100000
 
 #
 # Firmware with payload configuration.
